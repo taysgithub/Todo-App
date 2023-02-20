@@ -1,29 +1,11 @@
-import uuid from "react-uuid";
-import { useState } from "react";
+import { useContext } from "react";
 
 import { Task } from "./Task/Task";
+import { AppContext } from "../../App";
 
 export const Tasks = () => {
 
-    const [tasks, setTasks] = useState(
-        [
-            {
-                id: uuid(),
-                description: "Walk the dog",
-                done: false,
-            },
-            {
-                id: uuid(),
-                description: "Buy groceries",
-                done: false,
-            },
-            {
-                id: uuid(),
-                description: "Wash the car",
-                done: false,
-            },
-        ]
-    )
+    const {tasks, setTasks} = useContext(AppContext);
 
     const handleClearTasks = () => {
         // Change the state of tasks to empty array when called
@@ -59,7 +41,8 @@ export const Tasks = () => {
                 )
             )}
             <hr />
-            <button onClick={handleClearTasks}>Clear Tasks</button>
+
+            <button onClick={handleClearTasks} disabled={tasks.length === 0 ? true : false}>Clear Tasks</button>
         </div>
     );
 }
