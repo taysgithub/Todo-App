@@ -1,0 +1,18 @@
+@import "../../../Variables.scss";
+
+.headerIcon {
+    width: 30px;
+    height: 30px;
+    color: $main_font_color;
+}
+
+.navigation {
+    background-color: $color_light;
+    color: $main_font_color;
+
+    .options {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+}

@@ -1,29 +1,15 @@
-import uuid from "react-uuid";
-import { useState } from "react";
+import { useContext } from "react";
+import { Button } from "react-bootstrap";
 
 import { Task } from "./Task/Task";
+import { AppContext } from "../Home/Home";
+import { AddTask } from "../Forms/AddTask";
+
+import "./Tasks.scss";
 
 export const Tasks = () => {
 
-    const [tasks, setTasks] = useState(
-        [
-            {
-                id: uuid(),
-                description: "Walk the dog",
-                done: false,
-            },
-            {
-                id: uuid(),
-                description: "Buy groceries",
-                done: false,
-            },
-            {
-                id: uuid(),
-                description: "Wash the car",
-                done: false,
-            },
-        ]
-    )
+    const {tasks, setTasks} = useContext(AppContext);
 
     const handleClearTasks = () => {
         // Change the state of tasks to empty array when called
@@ -45,21 +31,26 @@ export const Tasks = () => {
     }
 
     return (
-        <div className="tasks">
-            <h2>These are the tasks:</h2>
-            {tasks.map(
-                (task, index) => (
-                    <Task 
-                        key={index} 
-                        task={task}
-                        // Send the functions to child component as props
-                        onStatusChange={handleStatusChange}
-                        onRemoveTask={removeTask}
-                    />
-                )
-            )}
+        <div className="tasks_container">
+            <div className="title">{tasks.length === 0 ? "No Tasks" : "All Tasks"}</div>
+            <div className="tasks">
+                    {tasks.map(
+                        (task, index) => (
+                            <Task 
+                                key={index} 
+                                task={task}
+                                // Send the functions to child component as props
+                                onStatusChange={handleStatusChange}
+                                onRemoveTask={removeTask}
+                            />
+                        )
+                    )}               
+            </div>
             <hr />
-            <button onClick={handleClearTasks}>Clear Tasks</button>
+            <div className="btnsContainer">
+                <AddTask/>
+                <Button variant="danger" size="sm" className="btn_tasks" disabled={tasks.length === 0 ? true : false} onClick={handleClearTasks}>Clear Task</Button>
+            </div>
         </div>
     );
 }

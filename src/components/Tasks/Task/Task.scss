@@ -1,0 +1,73 @@
+@import "../../../Variables.scss";
+
+.task {
+    @media only screen and (max-width: 27rem){
+        max-width: 22rem;    
+    }
+    @media only screen and (min-width: 48rem){
+        max-width: 22rem;    
+    }
+    @media only screen and (min-width: 64rem){
+        max-width: 25rem;    
+    }
+    @media only screen and (min-width: 90rem){
+        max-width: 25rem;    
+    }
+
+    // margin: $margin_card;
+    padding: $padding_card;
+    border-radius: 10px;
+    background-color: $color_dark;
+    overflow-x: scroll;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    .task_title {
+        font-weight: bold;
+
+        @media only screen and (max-width: 27rem){
+            font-size: 1.5625rem;
+        }
+        @media only screen and (min-width: 48rem){
+            font-size: 1.5625rem;
+        }
+        @media only screen and (min-width: 64rem){
+            font-size: 1.875rem;
+        }
+        @media only screen and (min-width: 90rem){
+            font-size: 1.875rem;
+        }
+    }
+
+    .taskId {
+        color: darkgray;
+    }
+
+    .status {
+        color: darkgray;
+    }
+
+    .completed {
+        padding: 0px 5px 2px 5px;
+        border-radius: 5px;
+        color: $main_font_color;
+        background-color: $compeleted_green;
+    }
+
+    .open {
+        padding: 0px 5px 2px 5px;
+        border-radius: 5px;
+        background-color: $open_yellow;
+        color: black;
+    }
+
+    .btns_card{
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        .btn_card {
+            margin: $margin_btn_card;
+
+        }
+    }
+}

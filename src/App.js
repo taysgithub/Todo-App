@@ -1,12 +1,15 @@
-import { Header } from "./components/Header/Header";
-import { Tasks } from "./components/Tasks/Tasks";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Home } from "./components/Home/Home"
 
 function App() {
   return (
-    <div className="App">
-      {/* Set up structure using components */}
-      <Header/>
-      <Tasks/>
+    <div>
+      <BrowserRouter>
+        <Routes>
+          <Route  path="/" element={<Home/>} />
+          <Route path="*" element={<Home/>}/>        
+        </Routes>
+      </BrowserRouter>
     </div>
   );
 }

@@ -1,0 +1,53 @@
+@import "../../Variables.scss";
+
+header {
+    background-color: $blue;
+    color: $main_font_color;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    width: 100vw;
+    min-width: 24rem;
+    // height: 7vh;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    @media only screen and (max-width: 27rem){
+        height: 60px;
+    }
+    @media only screen and (min-width: 48rem){
+        height: 60px;
+    }
+    @media only screen and (min-width: 64rem){
+        height: 60px;
+    }
+    @media only screen and (min-width: 90rem){
+        height: 80px;
+    }
+
+    div.left {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-around;
+        align-items: center;
+        width: 260px;
+
+        .logo {
+            width: 180px;
+            display: flex;
+            flex-direction: row;
+            justify-content: space-around;
+            align-items: center;
+            font-weight: bold;
+            font-size: 30px;
+        }
+    }
+
+    div.right {
+        margin: $margin_container;
+        @media only screen and (max-width: 27rem){
+            font-size: 0.8rem;        
+        }
+    }
+}

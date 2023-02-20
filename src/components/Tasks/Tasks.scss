@@ -1,0 +1,72 @@
+@import "../../Variables.scss";
+
+.tasks_container {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    .title {
+        font-weight: bold;
+        margin: 0.8rem 1rem 0.8rem 0rem;
+        @media only screen and (max-width: 27rem){
+            font-size: 1.8rem;
+        }
+        @media only screen and (min-width: 48rem){
+            font-size: 1.8rem;
+        }
+        @media only screen and (min-width: 64rem){
+            font-size: 2rem;
+        }
+        @media only screen and (min-width: 90rem){
+            font-size: 2rem;
+        }
+    }
+
+    .tasks {
+        display: grid;
+        gap: 1rem;
+        @media only screen and (max-width: 27rem){
+            width: 22rem;
+            grid-template-columns: repeat(1, 1fr);
+            max-height: 65dvh;
+            @media (orientation: landscape) {
+                max-height: 30dvh;
+            }
+        }
+        @media only screen and (min-width: 27rem){
+            width: 22rem;
+            grid-template-columns: repeat(1, 1fr);
+            max-height: 45dvh;
+        }
+        @media only screen and (min-width: 48rem){
+            width: 45rem;
+            grid-template-columns: repeat(2, 1fr);
+            max-height: 75dvh;
+            @media (orientation: landscape) {
+                max-height: 45dvh;
+            }
+        }
+        @media only screen and (min-width: 64rem){
+            width: 52rem;
+            grid-template-columns: repeat(2, 1fr);
+            max-height: 65dvh;
+        }
+        @media only screen and (min-width: 90rem){
+            width: 77rem;
+            grid-template-columns: repeat(3, 1fr);
+            max-height: 70dvh;
+        }
+
+        overflow: scroll;
+    }
+    
+    .btnsContainer {
+        display: flex;
+        flex-direction: row;
+        justify-content: flex-end;
+
+        .btn_tasks {
+            margin: $margin_btn_card;
+        }
+    }
+}

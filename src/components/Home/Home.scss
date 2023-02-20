@@ -1,0 +1,24 @@
+@import "../../Variables.scss";
+
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $color_mid2;
+    min-width: 24rem;
+    height: 100vh;
+    ::-webkit-scrollbar{
+        display: none;
+    }
+    -ms-overflow-style: none; 
+    scrollbar-width: none;
+
+    .appBodyContainer {        
+        display: flex;
+        flex-direction: column; 
+        align-items: center;
+        flex-grow: 1;
+        color: $main_font_color;
+    }
+}
+
