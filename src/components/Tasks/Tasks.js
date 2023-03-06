@@ -2,7 +2,7 @@ import { useContext } from "react";
 import { Button } from "react-bootstrap";
 
 import { Task } from "./Task/Task";
-import { AppContext } from "../Home/Home";
+import { AppContext } from "../../App";
 import { AddTask } from "../Forms/AddTask";
 
 import "./Tasks.scss";

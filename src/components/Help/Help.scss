@@ -1,0 +1,47 @@
+@import "../../Variables.scss";
+
+.help {
+    background-color: $color_dark;
+    margin: 5rem 0rem;
+    padding: 5rem 10rem;
+    min-height: 75dvh;
+    border-radius: 2rem;
+    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 1.25rem;
+    @media only screen and (min-width: 90rem){
+        width: 77rem;
+        max-height: 70dvh;
+    }
+    color: $main_font_color;
+
+    .help-menu {
+        display: flex;
+        flex-direction: column;
+    }
+
+    #nav-dropdown{
+        font-weight: bold;
+        font-size: 1.25rem;
+        border-radius: 1.25rem;
+        // color: $blue;
+        color: $main_font_color;
+        background-color: $blue2;
+        padding: 0.1rem 1rem;
+    }
+    #nav-dropdown:hover {
+        color: $main_font_color;
+        background-color: $blue-btn-hover;
+    }
+
+    .help-content {
+        background-color: $blue2;
+        // margin: 5rem 0rem;
+        padding: 5rem 5rem;
+        border-radius: 2rem;
+    }
+}

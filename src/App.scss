@@ -1,0 +1,18 @@
+@import './Variables.scss';
+
+.app {
+    background-color: $color_mid2;
+    min-width: 24rem;
+    height: 100vh;
+
+    .main {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        // @media only screen and (min-width: 90rem){
+        //     width: 77rem;
+        //     max-height: 70dvh;
+        // }
+    }
+}

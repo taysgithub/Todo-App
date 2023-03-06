@@ -1,6 +1,6 @@
 import uuid from "react-uuid";
 import { useState, useContext } from "react"
-import { AppContext } from "../Home/Home";
+import { AppContext } from "../../App";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';

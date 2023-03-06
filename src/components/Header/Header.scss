@@ -33,14 +33,20 @@ header {
         align-items: center;
         width: 260px;
 
-        .logo {
-            width: 180px;
-            display: flex;
-            flex-direction: row;
-            justify-content: space-around;
-            align-items: center;
-            font-weight: bold;
-            font-size: 30px;
+        .go-home {
+            background-color: transparent;
+            border: none;
+            cursor: pointer;
+
+            .logo {
+                width: 180px;
+                display: flex;
+                flex-direction: row;
+                justify-content: space-around;
+                align-items: center;
+                font-weight: bold;
+                font-size: 30px;
+            }
         }
     }
 
