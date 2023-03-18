@@ -1,4 +1,4 @@
-export const Help_Introduction = () => {
+export const HelpIntroduction = () => {
     return (
         <div className="help_introduction">
             <h3>Introduction</h3>

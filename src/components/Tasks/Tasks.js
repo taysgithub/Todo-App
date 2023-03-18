@@ -3,7 +3,7 @@ import { Button } from "react-bootstrap";
 
 import { Task } from "./Task/Task";
 import { AppContext } from "../../App";
-import { AddTask } from "../Forms/AddTask";
+// import { AddTask } from "../Forms/AddTask";
 
 import "./Tasks.scss";
 
@@ -48,7 +48,7 @@ export const Tasks = () => {
             </div>
             <hr />
             <div className="btnsContainer">
-                <AddTask/>
+                {/* <AddTask/> */}
                 <Button variant="danger" size="sm" className="btn_tasks" disabled={tasks.length === 0 ? true : false} onClick={handleClearTasks}>Clear Task</Button>
             </div>
         </div>

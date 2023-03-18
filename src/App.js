@@ -2,13 +2,14 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { useState, createContext } from "react";
 import { Home } from "./components/Home/Home";
 import { Header } from "./components/Header/Header";
-import { AddTask2 } from "./components/Forms/AddTask2";
+import { AddTask } from "./components/Forms/AddTask";
 import { Help } from "./components/Help/Help";
+import { PageNotFound } from "./components/PageNotFound/PageNotFound";
 import { data } from "./Data";
 import './App.scss';
-import { Help_Add_Task } from "./components/Help/Help-add";
-import { Help_Introduction } from "./components/Help/Help-introduction";
-import {Help_Remove_Task} from "./components/Help/Help-remove";
+import { HelpAddTask } from "./components/Help/Help-add";
+import { HelpIntroduction } from "./components/Help/Help-introduction";
+import {HelpRemoveTask} from "./components/Help/Help-remove";
 
 // create and export an AppContext using createContext()
 export const AppContext = createContext();
@@ -25,12 +26,12 @@ function App() {
             <Routes>
               <Route  path="/" element={<Home/>} />
               <Route  path="/help" element={<Help/>} >
-                <Route  path="introduction" element={<Help_Introduction/>} />
-                <Route  path="add" element={<Help_Add_Task/>} />
-                <Route  path="remove" element={<Help_Remove_Task/>} />
+                <Route  path="introduction" element={<HelpIntroduction/>} />
+                <Route  path="add" element={<HelpAddTask/>} />
+                <Route  path="remove" element={<HelpRemoveTask/>} />
               </Route>
-              <Route path="*" element={<Home/>}/>  
-              <Route  path="/add" element={<AddTask2/>} />    
+              <Route path="*" element={<PageNotFound/>}/>  
+              <Route  path="/add" element={<AddTask/>} />    
             </Routes>
           </div>
         </BrowserRouter>
