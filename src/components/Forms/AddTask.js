@@ -9,6 +9,9 @@ import "./AddTask.scss";
 import { Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
+import { db } from "../../firebase";
+import { collection, addDoc, serverTimestamp } from "firebase/firestore";
+
 export const AddTask = () => {
 
     // Collect the user input in a custom component using controlled components
@@ -33,7 +36,7 @@ export const AddTask = () => {
     // access the variables using useContext
     const {tasks, setTasks} = useContext(AppContext);
 
-    const handleSubmit = (event) => {
+    const handleSubmit = async (event) => {
         if (description.trim() === '') {
             setDescription('');
             event.preventDefault();
@@ -47,6 +50,11 @@ export const AddTask = () => {
                 description: description,
                 done: status
             }]);
+            const docRef = await addDoc(collection(db, "tasks"), {
+                description: description,
+                done: status,
+                timestamp: serverTimestamp()
+            })
             // setShow(false)
             setIsValid(false);
             initialize();
