@@ -1,62 +1,83 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
 import { Button } from "react-bootstrap";
-
 import { Task } from "./Task/Task";
 import { AppContext } from "../../App";
-// import { AddTask } from "../Forms/AddTask";
-
 import { db } from "../../firebase";
-import { collection, query, where, getDocs, updateDoc, doc, deleteDoc } from "firebase/firestore";
-
+import { collection,  updateDoc, doc, deleteDoc, onSnapshot, query } from "firebase/firestore";
 import "./Tasks.scss";
 
 export const Tasks = () => {
 
     const {tasks, setTasks} = useContext(AppContext);
+    const [isLoading, setIsLoading] = useState(true);
 
     const handleClearTasks = () => {
-        // Change the state of tasks to empty array when called
-        setTasks([]);
+        try {
+            tasks.forEach(async task => {
+                await deleteDoc(doc(db, "tasks", task.id));
+            });
+        } catch(err){
+            alert("Error, please try again.");
+            console.log(err);
+        }
     }
 
     const handleStatusChange = (id) => {
         const docRef = doc(db, "tasks", id);
-        const updatedTasks = [...tasks];
-        tasks.forEach(async task => {
-            if(task.id === id){
-                task.done = !task.done;
-                await updateDoc(docRef, {
-                    done: task.done
-                })
-            }
-        })
-        setTasks(updatedTasks);
+        try {
+            tasks.forEach(async task => {
+                if(task.id === id){
+                    task.done = !task.done;
+                    await updateDoc(docRef, {
+                        done: task.done
+                    })
+                }
+            });
+        } catch(err){
+            alert("Error, please try again.");
+            console.log(err);
+        }
     }
 
     const removeTask = async (id) => {
-        await deleteDoc(doc(db, "tasks", tasks.filter(task => task.id === id)[0].id));
-        setTasks(tasks.filter(task => task.id !== id));
+        try{
+            await deleteDoc(doc(db, "tasks", tasks.filter(task => task.id === id)[0].id));
+        } catch(err){
+            alert("Error, please try again.");
+            console.log(err);
+        }
     }
 
-    const q = query(collection(db, "tasks"));
-
-    const getTasks = async () => {
-        const querySnapshot = await getDocs(collection(db, "tasks"));
-        setTasks(querySnapshot.docs.map(doc => ({
-            id: doc.id,
-            description: doc.data().description,
-            done: doc.data().done,
-            timestamp: doc.data().timestamp
-        })).sort((a, b) => a.timestamp - b.timestamp))
+    const subscribeTasks = () => {
+        setIsLoading(true);
+        const q = query(collection(db, "tasks"));
+        const unsubscribe = onSnapshot(q, (querySnapshot) => {
+            if(querySnapshot.docs.length !== 0){
+                setTasks(querySnapshot.docs.map(doc => ({
+                    id: doc.id,
+                    description: doc.data().description,
+                    done: doc.data().done,
+                    timestamp: doc.data().timestamp
+                })).sort((a, b) => a.timestamp - b.timestamp));
+            }
+            else {
+                setTasks([]);
+            }
+            setIsLoading(false);
+        },
+        (err) => {
+            alert("Error, please try again.");
+            console.log(err);
+        });
     }
 
     useEffect(() => {
-        getTasks()
-    }, []);
+        subscribeTasks();
+    },[]);
 
     return (
         <div className="tasks_container">
-            <div className="title">{tasks.length === 0 ? "No Tasks" : "All Tasks"}</div>
+            <div className="title">{isLoading? "Loading..." : tasks.length === 0 ? "No Task" : "All Tasks"}</div>
             <div className="tasks">
                     {tasks.map(
                         (task, index) => (

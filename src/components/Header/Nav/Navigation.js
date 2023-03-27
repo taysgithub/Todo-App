@@ -28,15 +28,18 @@ export const Navigation = () => {
                 <Offcanvas.Body>
                     {/* <Nav justify variant="pills" defaultActiveKey="/" className='options'>
                         <Nav.Item>
-                            <Nav.Link href="/">All Tasks</Nav.Link>
+                            <Nav.Link href="/" className='option'>All Tasks</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
-                            <Nav.Link href="/add">Add Task</Nav.Link>
+                            <Nav.Link href="/add" className='option'>Add Task</Nav.Link>
+                        </Nav.Item>
+                        <Nav.Item>
+                            <Nav.Link href="/help" className='option'>Help</Nav.Link>
                         </Nav.Item>
                     </Nav> */}
                     <Nav justify variant="pills" defaultActiveKey="/" className='options'>
                         <Nav.Item>
-                            <Nav.Link as={Link} to="/" onClick={handleClose}  className='option'>All Tasks</Nav.Link>
+                            <Nav.Link as={Link} to="/" onClick={handleClose} className='option'>All Tasks</Nav.Link>
                         </Nav.Item>
                         <Nav.Item>
                             <Nav.Link as={Link} to="/add" onClick={handleClose} className='option'>Add Task</Nav.Link>

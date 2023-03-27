@@ -1,11 +1,7 @@
-import uuid from "react-uuid";
-import { useState, useContext } from "react"
-import { AppContext } from "../../App";
-// import Modal from 'react-bootstrap/Modal';
+import { useState } from "react"
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import "./AddTask.scss";
-// import "./AddTask2.scss";
 import { Row } from "react-bootstrap";
 import { useNavigate } from 'react-router-dom';
 
@@ -18,7 +14,6 @@ export const AddTask = () => {
     const [description, setDescription] = useState('');
     const [status, setStatus] = useState(false);
     const [isValid, setIsValid] = useState(false);
-    // const [show, setShow] = useState(false);
     const navigate = useNavigate();
 
     const initialize = () => {
@@ -26,15 +21,10 @@ export const AddTask = () => {
         setStatus(false);
     }
     const handleClose = () => {
-        // setShow(false);             
         setIsValid(false);
         initialize();
         navigate('/');
     };
-    // const handleShow = () => setShow(true);
-
-    // access the variables using useContext
-    const {tasks, setTasks} = useContext(AppContext);
 
     const handleSubmit = async (event) => {
         if (description.trim() === '') {
@@ -45,17 +35,11 @@ export const AddTask = () => {
         }
         else{
             event.preventDefault();
-            setTasks([...tasks, {
-                id: uuid(),
-                description: description,
-                done: status
-            }]);
-            const docRef = await addDoc(collection(db, "tasks"), {
+            await addDoc(collection(db, "tasks"), {
                 description: description,
                 done: status,
                 timestamp: serverTimestamp()
             })
-            // setShow(false)
             setIsValid(false);
             initialize();
             navigate('/');

@@ -5,7 +5,6 @@ import { Header } from "./components/Header/Header";
 import { AddTask } from "./components/Forms/AddTask";
 import { Help } from "./components/Help/Help";
 import { PageNotFound } from "./components/PageNotFound/PageNotFound";
-import { data } from "./Data";
 import './App.scss';
 import { HelpAddTask } from "./components/Help/Help-add";
 import { HelpIntroduction } from "./components/Help/Help-introduction";
@@ -15,7 +14,7 @@ import {HelpRemoveTask} from "./components/Help/Help-remove";
 export const AppContext = createContext();
 
 function App() {
-  const [tasks, setTasks] = useState(data);
+  const [tasks, setTasks] = useState([]);
 
   return (
     <div className="app">
