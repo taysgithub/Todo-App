@@ -20,7 +20,7 @@ export const Header = () => {
                 </Button>
             </div>
             <div className="right">
-                by Yuxiao Yan
+                by Ryan Yan
             </div>
         </header>
     );

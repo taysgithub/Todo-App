@@ -12,13 +12,16 @@ export const Tasks = () => {
     const [isLoading, setIsLoading] = useState(true);
 
     const handleClearTasks = () => {
-        try {
-            tasks.forEach(async task => {
-                await deleteDoc(doc(db, "tasks", task.id));
-            });
-        } catch(err){
-            alert("Error, please try again.");
-            console.log(err);
+
+        if(window.confirm("Do you want to delete all the tasks?")){
+            try {
+                tasks.forEach(async task => {
+                    await deleteDoc(doc(db, "tasks", task.id));
+                });
+            } catch(err){
+                alert("Error, please try again.");
+                console.log(err);
+            }
         }
     }
 
@@ -40,11 +43,13 @@ export const Tasks = () => {
     }
 
     const removeTask = async (id) => {
-        try{
-            await deleteDoc(doc(db, "tasks", tasks.filter(task => task.id === id)[0].id));
-        } catch(err){
-            alert("Error, please try again.");
-            console.log(err);
+        if(window.confirm("Do you want to delete this task?")){
+            try{
+                await deleteDoc(doc(db, "tasks", tasks.filter(task => task.id === id)[0].id));
+            } catch(err){
+                alert("Error, please try again.");
+                console.log(err);
+            }
         }
     }
 
